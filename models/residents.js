@@ -18,9 +18,19 @@ const Resident = db.define('resident', {
   debt: {
     type: DataTypes.NUMERIC,
     allowNull: false
+  },
+  address_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: 'addresses',
+      key: 'id'
+    }
   }
+}, {
+  timestamps: false
 });
 
-Resident.belongsTo(Address);
+Resident.belongsTo(Address, { foreignKey: 'address_id' });
 
 module.exports = Resident;

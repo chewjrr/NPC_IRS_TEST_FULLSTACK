@@ -10,10 +10,11 @@ const createResident = async (req, res) => {
   }
 };
 
-const getAllResidents = async (res) => {
+const getAllResidents = async (req, res) => {
   const residents = await Resident.findAll();
   res.json(residents);
 };
+
 
 const getResidentById = async (req, res) => {
   const { id } = req.params;
@@ -38,16 +39,11 @@ const deleteResident = async (req, res) => {
   res.json({ message: 'Resident deleted successfully' });
 };
 
-const getResidentsWithDebts = async (req, res) => {
-  const residentsWithDebts = await Resident.findAll({ where: { debt: { [Op.gt]: 0 } } });
-  res.json(residentsWithDebts);
-};
 
 module.exports = {
   createResident,
   getAllResidents,
   getResidentById,
   updateResident,
-  deleteResident,
-  getResidentsWithDebts
+  deleteResident
 };

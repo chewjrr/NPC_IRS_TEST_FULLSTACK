@@ -7,6 +7,5 @@ router.get('/all', residentController.getAllResidents);
 router.get('/:id', residentController.getResidentById);
 router.put('/:id', residentController.updateResident);
 router.delete('/:id', residentController.deleteResident);
-router.get('/debts', residentController.getResidentsWithDebts);
 
 module.exports = router;

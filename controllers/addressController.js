@@ -32,10 +32,15 @@ const deleteAddress = async (req, res) => {
   res.json({ message: 'Address deleted successfully' });
 };
 
-const getAllAddresses = async (res) => {
-  const allAddresses = await Address.findAll();
-  res.json(allAddresses);
+const getAllAddresses = async (req, res) => {
+  try {
+    const allAddresses = await Address.findAll();
+    res.json(allAddresses);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
+
 
 module.exports = {
   createAddress,
